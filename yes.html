@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Choose Destination</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1 class="headline">Where do you want to go with me? 🌍💖</h1>
+
+    <div class="places">
+
+        <div class="place-card" onclick="logPlace('Beach');window.location.href='beach.html'">
+            <img src="image/beach.jpeg" >
+            <p>Beach 🏖️</p>
+        </div>
+
+        <div class="place-card" onclick="logPlace('Mountains');window.location.href='mountain.html'">
+            <img src="image/mountain.jpeg" >
+            <p>Mountains ⛰️</p>
+        </div>
+
+        <div class="place-card" onclick="logPlace('Foreign'); window.location.href='foreign.html'" >
+            <img src="image/foreign.jpeg" >
+            <p>Foreign ✈️</p>
+        </div>
+
+        <div class="place-card" onclick="logPlace('Forest');window.location.href='forest.html'">
+            <img src="image/forest.jpeg" >
+            <p>Forest 🌲</p>
+        </div>
+
+    </div>
+</div>
+<script>
+
+// ---------- HELPERS ----------
+function getUsers(){
+    return JSON.parse(localStorage.getItem("users")) || {};
+}
+
+function saveUsers(users){
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+function getCurrentUser(){
+    return localStorage.getItem("currentUser");
+}
+
+function logAction(text){
+    let user = getCurrentUser();
+    if(!user) return;
+
+    let users = getUsers();
+
+    if(!users[user]){
+        users[user] = {
+            interested:0,
+            notinterested:0,
+            budget:0,
+            log:[]
+        };
+    }
+
+    users[user].log.push(text);
+    saveUsers(users);
+}
+
+// ---------- PAGE OPEN ----------
+logAction("Opened Destination Selection Page");
+
+// ---------- PLACE CLICK ----------
+function logPlace(place){
+    logAction("Selected " + place);
+}
+
+</script>
+
+</body>
+</html>

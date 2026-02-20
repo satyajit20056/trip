@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trip Proposal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+    <h1 class="headline">I want to go a trip with you 💖</h1>
+
+    <div class="buttons">
+        <a href="yes.html" class="option yes"onclick="logInterested()">I am interested😍💖</a>
+
+        <button id="noBtn" class="option no">I am not interested 😔</button>
+
+    </div>
+</div>
+
+<script>
+
+function getUsers(){
+    return JSON.parse(localStorage.getItem("users")) || {};
+}
+
+function saveUsers(users){
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+function getCurrentUser(){
+    return localStorage.getItem("currentUser");
+}
+
+function logAction(text){
+    let user = getCurrentUser();
+    if(!user) return;
+
+    let users = getUsers();
+
+    if(!users[user]){
+        users[user] = {
+            interested:0,
+            notinterested:0,
+            budget:0,
+            log:[]
+        };
+    }
+
+    users[user].log.push(text);
+    saveUsers(users);
+}
+
+// ---------- INTERESTED ----------
+function logInterested(){
+
+    let user = getCurrentUser();
+    let users = getUsers();
+
+    users[user].interested++;
+    saveUsers(users);
+
+    logAction("Clicked Interested");
+}
+
+// ---------- NOT INTERESTED ----------
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("click", function(){
+
+    let user = getCurrentUser();
+    let users = getUsers();
+
+    users[user].notinterested++;
+    saveUsers(users);
+
+    logAction("Clicked Not Interested");
+
+    const x = Math.random() * (window.innerWidth - 150);
+    const y = Math.random() * (window.innerHeight - 150);
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+</script>
+
+
+</body>
+</html>

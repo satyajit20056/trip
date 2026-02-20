@@ -1,0 +1,332 @@
+/* Reset */
+body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    overflow:hidden;
+}
+
+/* Animated Gradient Background */
+body{
+    background:black;
+    overflow:hidden;
+}
+
+body{
+    background: linear-gradient(-45deg,#1d5746,#6dd5ed,#768b02,#753a88);
+    background-size:400% 400%;
+    animation: waves 10s ease infinite;
+}
+
+@keyframes waves{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+
+.neon{
+    color:#440668df;
+     font-family:'Montserrat', sans-serif;
+    font-size:40px;
+    text-decoration:none;
+    padding:20px 50px;
+    border:2px double #032828b9;
+    border-radius:35px;
+    text-transform:uppercase;
+    letter-spacing:4px;
+    position:relative;
+    transition:0.4s;
+}
+
+/* Neon Glow Effect */
+.neon:hover{
+    color:#000;
+    background:#00ffff;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #072c5dc4,
+        0 0 40px #00ffff,
+        0 0 80px #00ffff;
+}
+.headline{
+    color:rgb(62, 51, 39);
+     font-family:'Orbitron', sans-serif;
+    font-size:48px;
+    margin-bottom:30px;
+    animation: slideDown 1.5s ease;
+    margin-top: 2px;
+}
+
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.buttons{
+    margin-top:30px;
+}
+
+.option{
+    display:inline-block;
+    margin:15px;
+    padding:15px 35px;
+    text-decoration:none;
+    font-size:18px;
+    border-radius:30px;
+    transition:0.3s;
+    color:white;
+    cursor:pointer;
+}
+
+/* YES Button */
+.yes{
+    background:#00cc66;
+    border:2px solid #00ff88;
+    box-shadow:
+        0 0 10px #00ff88,
+        0 0 20px #00ff88;
+}
+
+.yes:hover{
+    background:#00ff88;
+    box-shadow:0 0 15px #00ff88;
+}
+
+/* NO Button */
+.no{
+    background:#cc0000;
+    color:white;
+    border:2px solid #ff4d4d;
+    box-shadow:
+        0 0 10px #ff4d4d,
+        0 0 20px #ff4d4d;
+}
+
+.no:hover{
+    background:#ff3333;
+    box-shadow:0 0 15px #ff3333;
+}
+/* Center everything */
+body{
+     margin:0;
+    padding:0;
+    min-height:100vh;
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    font-family: 'Segoe UI', sans-serif;
+    overflow-y:auto; 
+}
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+}
+
+/* Container */
+.container{
+    background: rgba(255,255,255,0.1);
+    padding:50px 60px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+    text-align:center;
+}
+
+/* Heading */
+.headline{
+    font-size:42px;
+    color:#fff;
+    margin-bottom:30px;
+    letter-spacing:2px;
+}
+
+/* Input */
+input{
+    width:260px;
+    padding:14px;
+    border-radius:25px;
+    border:none;
+    outline:none;
+    font-size:16px;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+/* Button */
+.neon{
+    display:inline-block;
+    padding:14px 45px;
+    border-radius:30px;
+    background:#ff00cc;
+    color:white;
+    font-size:18px;
+    border:none;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:0.3s;
+}
+
+/* Hover Effect */
+.neon:hover{
+    background:#00ffff;
+    box-shadow:0 0 15px #00ffff,
+               0 0 30px #00ffff;
+    transform:scale(1.05);
+}
+/* Colorful Animated Background */
+body{
+    background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#a18cd1,#84fab0);
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Places Grid */
+.places{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    margin-top:40px;
+}
+
+/* Card Box */
+.place-card{
+    width:220px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Image */
+.place-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+/* Location Name */
+.place-card p{
+    text-align:center;
+    padding:12px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* Hover Effect */
+.place-card:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px white;
+}
+.buttons{
+    margin-top:30px;
+}
+
+.option{
+    padding:15px 35px;
+    border-radius:30px;
+    font-size:18px;
+    border:none;
+    cursor:pointer;
+    margin:10px;
+    color:white;
+    text-decoration:none;
+}
+
+.yes{
+    background:#00cc66;
+}
+
+.no{
+    background:#cc0000;
+}
+/* Confetti container */
+.confetti{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+/* Confetti piece */
+.confetti-piece{
+    position:absolute;
+    width:10px;
+    height:10px;
+    top:-10px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+    to{
+        transform:translateY(100vh) rotate(360deg);
+        opacity:0;
+    }
+}
+.shape{
+    position:absolute;
+    bottom:-20px;
+    border-radius:50%;
+    animation: floatDown linear infinite;
+}
+
+/* Animation */
+@keyframes floatDown{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+.admin-card{
+    background:white;
+    padding:20px;
+    margin:15px auto;
+    width:300px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+    text-align:left;
+}
+#clearBtn{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 22px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 9999;
+}
+
+#clearBtn:hover{
+    background: darkred;
+}

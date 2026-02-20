@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Name</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1 class="headline">Enter Your Name</h1>
+
+    <input type="text" id="username" placeholder="Your Name"oninput="autoSave()">
+
+    <br><br>
+
+    <button class="neon" onclick="saveName()">Submit</button>
+</div>
+
+<script>
+function getUsers(){
+    return JSON.parse(localStorage.getItem("users")) || {};
+}
+
+function saveUsers(users){
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+function getCurrentUser(){
+    return localStorage.getItem("currentUser");
+}
+
+function logAction(text){
+    let user = getCurrentUser();
+    if(!user) return;
+
+    let users = getUsers();
+
+    if(!users[user]){
+        users[user] = {
+            interested:0,
+            notinterested:0,
+            budget:0,
+            log:[]
+        };
+    }
+
+    users[user].log.push(text);
+    saveUsers(users);
+}
+function saveName(){
+
+    let name = document.getElementById("username").value.trim();
+
+    if(name === ""){
+        alert("Please enter your name");
+        return;
+    }
+
+    // Save current user
+    localStorage.setItem("currentUser", name);
+
+    let users = getUsers();
+
+    if(!users[name]){
+        users[name] = {
+            interested:0,
+            notinterested:0,
+            budget:0,
+            log:[]
+        };
+    }
+
+    users[name].log.push("Entered Name");
+    saveUsers(users);
+
+    window.location.href = "trip.html";
+}
+
+</script>
+
+
+</body>
+</html>

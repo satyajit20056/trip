@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>No Budget</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1 class="headline">😎We are successfully cancel our plan 😎</h1>
+<div class="confetti"></div>
+
+<script>
+for(let i=0;i<60;i++){
+    let confetti = document.createElement("div");
+    confetti.className = "confetti-piece";
+    confetti.style.left = Math.random()*100 + "vw";
+    confetti.style.animationDuration = (Math.random()*3 + 3) + "s";
+    confetti.style.backgroundColor =
+        "hsl(" + Math.random()*360 + ",100%,50%)";
+    document.querySelector(".confetti").appendChild(confetti);
+}
+</script>
+<div class="shapes"></div>
+
+<script>
+for(let i=0;i<40;i++){
+    let shape = document.createElement("span");
+    shape.className = "shape";
+    shape.style.background =
+  "hsl(" + Math.random()*360 + ",100%,60%)";
+    shape.style.left = Math.random()*100 + "vw";
+    shape.style.width = shape.style.height =
+        Math.random()*20 + 10 + "px";
+    shape.style.animationDuration =
+        Math.random()*6 + 4 + "s";
+    document.querySelector(".shapes").appendChild(shape);
+}
+</script>
+
+<script>
+function getUsers(){
+    return JSON.parse(localStorage.getItem("users")) || {};
+}
+
+function saveUsers(users){
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+function getCurrentUser(){
+    return localStorage.getItem("currentUser");
+}
+
+function logAction(text){
+
+    let user = getCurrentUser();
+    if(!user) return;
+
+    let users = getUsers();
+
+    if(!users[user]){
+        users[user] = {
+            interested:0,
+            notinterested:0,
+            budget:0,
+            log:[]
+        };
+    }
+
+    if(!users[user].log){
+        users[user].log = [];
+    }
+
+    users[user].log.push(text);
+    saveUsers(users);
+}
+
+/* LOG PAGE OPEN */
+logAction("Opened No Budget Page");
+</script>
+
+</body>
+</html>

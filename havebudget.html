@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Budget Question</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1 class="headline">Have you budget? 💰</h1>
+
+    <div class="buttons">
+        <button class="option yes" id="yesBtn">Yes ✅</button>
+        <a href="nobudget.html" class="option no"onclick="logNoBudget()">No ❌</a>
+    </div>
+</div>
+
+<script>
+function getUsers(){
+  return JSON.parse(localStorage.getItem("users")) || {};
+}
+
+function saveUsers(users){
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+function getCurrentUser(){
+  return localStorage.getItem("currentUser");
+}
+
+/* ===== UNIVERSAL LOGGER ===== */
+function logAction(text){
+  let user = getCurrentUser();
+  if(!user) return;
+
+  let users = getUsers();
+
+  if(!users[user]){
+    users[user] = {
+      interested:0,
+      notinterested:0,
+      budget:0,
+      log:[]
+    };
+  }
+
+  users[user].log.push(text);
+  saveUsers(users);
+}
+
+/* ===== PAGE OPEN LOG ===== */
+logAction("Opened Budget Page");
+
+/* ===== YES BUTTON MOVE ===== */
+let yesBtn = document.getElementById("yesBtn");
+
+function moveYesButton(){
+  let maxX = window.innerWidth - yesBtn.offsetWidth - 30;
+  let maxY = window.innerHeight - yesBtn.offsetHeight - 30;
+
+  yesBtn.style.position = "fixed";
+  yesBtn.style.left = Math.random()*maxX + "px";
+  yesBtn.style.top  = Math.random()*maxY + "px";
+}
+
+yesBtn.addEventListener("mouseover", moveYesButton);
+yesBtn.addEventListener("click", moveYesButton);
+
+/* ===== NO BUTTON ===== */
+function logNoBudget(){
+  let user = getCurrentUser();
+  let users = getUsers();
+
+  users[user].budget++;
+  saveUsers(users);
+
+  logAction("Clicked NO Budget");
+  logAction("Opened No Budget Page");
+
+  window.location.href = "nobudget.html";
+}
+
+</script>
+
+
+</body>
+</html>

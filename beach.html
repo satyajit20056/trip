@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beach Trip</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1 class="headline">Which beach do you want to go? 🏖️</h1>
+
+    <div class="places">
+
+        <div class="place-card" onclick="goBudget('Selected Goa Beach')">
+            <img src="image/goa.jpeg">
+            <p>Goa 🏝️</p>
+        </div>
+
+        <div class="place-card" onclick="goBudget('Selected Maldives')">
+            <img src="image/maldives.jpeg">
+            <p>Maldives 🌊</p>
+        </div>
+
+        <div class="place-card" onclick="goBudget('Selected Bali')">
+            <img src="image/bali.jpeg">
+            <p>Bali 🌅</p>
+        </div>
+
+        <div class="place-card" onclick="goBudget('Selected Hawaii')">
+            <img src="image/hawaii.jpeg">
+            <p>Hawaii 🌺</p>
+        </div>
+
+    </div>
+</div>
+<script>
+
+function getUsers(){
+    return JSON.parse(localStorage.getItem("users")) || {};
+}
+
+function saveUsers(users){
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+function getCurrentUser(){
+    return localStorage.getItem("currentUser");
+}
+
+function logAction(text){
+
+    let user = getCurrentUser();
+    if(!user) return;
+
+    let users = getUsers();
+
+
+    if(!users[user]){
+        users[user] = {
+            interested:0,
+            notinterested:0,
+            budget:0,
+            log:[]
+        };
+    }
+    users[user].log.push(text);
+    saveUsers(users);
+}
+function goBudget(place){
+    logAction("Selected " + place);
+    logAction("Opened Budget Page");
+    window.location.href = "havebudget.html";
+}
+</script>
+
+</body>
+</html>

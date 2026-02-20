@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="headline">Admin Dashboard 🔐</h1>
+
+<button id="clearBtn">Clear All Data</button>
+
+<div id="data"></div>
+
+</div>
+
+<script>
+
+// ================= PASSWORD =================
+let pass = prompt("Enter Admin Password:");
+
+if(pass !== "721445"){
+    alert("Access Denied!");
+    window.location.href = "index.html";
+}
+
+// ================= CLEAR DATA BUTTON =================
+const clearBtn = document.getElementById("clearBtn");
+
+clearBtn.addEventListener("click", function(){
+    localStorage.clear();
+    alert("All data deleted successfully!");
+    location.reload();
+});
+
+// ================= LOAD USERS =================
+let users = JSON.parse(localStorage.getItem("users")) || {};
+let box = document.getElementById("data");
+
+// ================= DISPLAY USERS =================
+box.innerHTML = "";
+
+for(let name in users){
+
+    let logs = users[name].log.join("<br>");
+
+    box.innerHTML += `
+        <div class="admin-card">
+            <h3>👤 ${name}</h3>
+            <p>❤️ Interested: ${users[name].interested}</p>
+            <p>💔 Not Interested: ${users[name].notinterested}</p>
+            <p>💰 Budget Page Visits: ${users[name].budget}</p>
+            <p><b>Activity Log:</b><br>${logs}</p>
+        </div>
+    `;
+}
+// ===== SECRET RESET SHORTCUT =====
+document.addEventListener("keydown", function(e){
+
+    if(e.ctrlKey && e.shiftKey && e.key === "D"){
+        if(confirm("Delete all user data?")){
+            localStorage.clear();
+            alert("All data deleted!");
+            location.reload();
+        }
+    }
+
+});
+
+</script>
+
+
+</script>
+
+</body>
+</html>
